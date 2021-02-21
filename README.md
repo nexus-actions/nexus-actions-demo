@@ -4,6 +4,8 @@ A Kotlin multiplatform sample project that uses the [create-nexus-staging-repo](
 
 🔧See it in action in this repo's [Actions](https://github.com/martinbonnin/create-nexus-staging-repo-sample/actions) 🔧
 
+![](screenshot.png)
+
 To use in your repos, first create a job using the  `create-nexus-staging-repository` action:
 
 ```yaml
