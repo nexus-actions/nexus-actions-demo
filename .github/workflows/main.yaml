@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: 
       id: create
-      uses: martinbonnin/create-nexus-staging-repo@v0.1
+      uses: martinbonnin/create-nexus-staging-repo@main
       with:
         username: ${{ secrets.SONATYPE_USERNAME }}
         password: ${{ secrets.SONATYPE_PASSWORD }}
