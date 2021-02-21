@@ -15,7 +15,7 @@ jobs:
         username: mbonnin
         password: ${{ secrets.SONATYPE_PASSWORD }}
         staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
-        description: Created by $GITHUB_WORKFLOW ($GITHUB_ACTION) for $GITHUB_REPOSITORY
+        description: ${{ github.repository }} workflow:${{ github.workflow }} run:${{ github.run_number }}
 
   macOS:
     runs-on: macOS-latest
@@ -30,7 +30,7 @@ jobs:
           java-version: 14
       - name: Publish
         run: |
-          ./gradlew publishToOss
+          ./gradlew publishToOssRepository
         env:
           SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository-id }}
           SONATYPE_USERNAME: mbonnin
