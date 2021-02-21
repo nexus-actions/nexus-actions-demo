@@ -12,6 +12,6 @@ jobs:
         username: ${{ secrets.SONATYPE_USERNAME }}
         password: ${{ secrets.SONATYPE_PASSWORD }}
         staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
-        description: A test staging repository from Actions
+        description: A test staging repository from Actio
     - name: 
       run: echo "Repository created with id ${{ steps.create.outputs.repository-id }}"
