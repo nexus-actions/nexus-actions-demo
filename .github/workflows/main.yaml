@@ -14,4 +14,4 @@ jobs:
         staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
         description: A test staging repository from Actions
     - name: 
-      run: echo "The time was ${{ steps.create.outputs.repository-id }}"
+      run: echo "Repository created with id ${{ steps.create.outputs.repository-id }}"
