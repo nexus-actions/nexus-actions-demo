@@ -2,7 +2,7 @@
 
 A Kotlin multiplatform sample project that uses the [create-nexus-staging-repo](https://github.com/martinbonnin/create-nexus-staging-repo) Github Action to create a Nexus repository ahead of upload and avoid split staging repositories.
 
-🔧See it in action in the [Actions](https://github.com/martinbonnin/create-nexus-staging-repo-sample/actions) 🔧
+🔧See it in action in this repo's [Actions](https://github.com/martinbonnin/create-nexus-staging-repo-sample/actions) 🔧
 
 To use in your repos, first create a job using the  `create-nexus-staging-repository` action:
 
@@ -52,7 +52,7 @@ To reuse the newly created repository id in other jobs, declare a `needs` relati
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
 ```
 
-You can then use `SONATYPE_REPOSITORY_ID` to declare your maven repository 🎉:
+You can then use `SONATYPE_REPOSITORY_ID` to declare your maven repository in your `build.gradle.kts` 🎉:
 
 ```kotlin
   repositories {
