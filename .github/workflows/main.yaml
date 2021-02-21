@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Create staging repository
     outputs:
-      repositoryid: ${{ steps.step2.outputs.test }}
+      repositoryid: ${{ steps.create.outputs.repositoryid }}
       output2: ${{ steps.step2.outputs.test }}
     steps:
     - name: 
@@ -16,8 +16,6 @@ jobs:
         password: ${{ secrets.SONATYPE_PASSWORD }}
         staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
         description: A test staging repository from Actions
-    - name: 
-      run: echo "Repository created with id ${{ steps.create.outputs.repositoryid }}"
     - id: step2
       run: echo "::set-output name=test::world"
   job2:
