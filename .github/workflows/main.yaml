@@ -6,6 +6,7 @@ jobs:
     name: Create staging repository
     outputs:
       repositoryid: ${{ steps.create.outputs.repositoryid }}
+      output1: ${{ steps.step1.outputs.test }}
       output2: ${{ steps.step2.outputs.test }}
     steps:
     - name: 
@@ -16,8 +17,8 @@ jobs:
         password: ${{ secrets.SONATYPE_PASSWORD }}
         staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
         description: A test staging repository from Actions
-    - name: 
-      run: echo "Repository created with id ${{ steps.create.outputs.repositoryid }}"
+    - id: step1 
+      run: echo "::set-output name=test::${{ steps.create.outputs.repositoryid }}"
     - id: step2
       run: echo "::set-output name=test::world"
   job2:
@@ -26,5 +27,5 @@ jobs:
     name: Display repo
     steps:
     - name: 
-      run: echo "The created repository is ${{ needs.job1.outputs.repositoryid }} ${{needs.job1.outputs.output2}}"
+      run: echo "The created repository is ${{ needs.job1.outputs.repositoryid }} ${{needs.job1.outputs.output2}} ${{needs.job1.outputs.output1}}"
 
