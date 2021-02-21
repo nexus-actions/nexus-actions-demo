@@ -15,6 +15,8 @@ jobs:
         password: ${{ secrets.SONATYPE_PASSWORD }}
         staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
         description: A test staging repository from Actions
+    - name: 
+      run: echo "Repository created with id ${{ steps.create.outputs.repository-id }}"
 
   display_staging_repository_id:
     runs-on: ubuntu-latest
@@ -22,5 +24,5 @@ jobs:
     name: Upload file in staging repo
     steps:
     - name: 
-      run: echo "Repository created with id ${{ needs.create_staging_repository.outputs.repository-id }}"
+      run: echo "The created repository is ${{ needs.create_staging_repository.outputs.repository-id }}"
 
