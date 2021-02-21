@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Create staging repository
     outputs:
-      repository-id: ${{ steps.create.outputs.repository-id }}
+      repositoryid: ${{ steps.create.outputs.repositoryid }}
       output2: ${{ steps.step2.outputs.test }}
     steps:
     - name: 
@@ -17,7 +17,7 @@ jobs:
         staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
         description: A test staging repository from Actions
     - name: 
-      run: echo "Repository created with id ${{ steps.create.outputs.repository-id }}"
+      run: echo "Repository created with id ${{ steps.create.outputs.repositoryid }}"
     - id: step2
       run: echo "::set-output name=test::world"
   job2:
@@ -26,5 +26,5 @@ jobs:
     name: Upload file in staging repo
     steps:
     - name: 
-      run: echo "The created repository is ${{ needs.job1.outputs.repository-id }} ${{needs.job1.outputs.output2}}"
+      run: echo "The created repository is ${{ needs.job1.outputs.repositoryid }} ${{needs.job1.outputs.output2}}"
 
