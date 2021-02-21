@@ -15,7 +15,7 @@ jobs:
         username: mbonnin
         password: ${{ secrets.SONATYPE_PASSWORD }}
         staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
-        description: ${{ github.repository }} workflow:${{ github.workflow }} run:${{ github.run_number }}
+        description: ${{ github.repository }}/${{ github.workflow }}#${{ github.run_number }}
 
   macOS:
     runs-on: macOS-latest

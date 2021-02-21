@@ -15,6 +15,13 @@ kotlin {
 
 group = "com.example"
 version = "0.1"
+
+/**
+ * Minimalist publishing setup. The multiplatform plugin does most of the work for us but we still
+ * need to configure repositories and pom. A more complete setup would also configure signing.
+ *
+ * See https://github.com/vanniktech/gradle-maven-publish-plugin for a plugin that helps setting this up.
+ */
 publishing {
   repositories {
     maven {
