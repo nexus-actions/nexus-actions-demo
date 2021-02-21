@@ -5,27 +5,21 @@ jobs:
     runs-on: ubuntu-latest
     name: Create staging repository
     outputs:
-      repositoryid: ${{ steps.create.outputs.repositoryid }}
-      output1: ${{ steps.step1.outputs.test }}
-      output2: ${{ steps.step2.outputs.test }}
+      repository-id: ${{ steps.create.outputs.repository-id }}
     steps:
     - name: 
       id: create
       uses: martinbonnin/create-nexus-staging-repo@main
       with:
-        username: ${{ secrets.SONATYPE_USERNAME }}
+        username: mbonnin # Do not use secrets since the repository id will contain it and it will not be passed accross jobs
         password: ${{ secrets.SONATYPE_PASSWORD }}
         staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
         description: A test staging repository from Actions
-    - id: step1 
-      run: echo "::set-output name=test::${{ steps.create.outputs.repositoryid }}"
-    - id: step2
-      run: echo "::set-output name=test::world"
   job2:
     runs-on: ubuntu-latest
     needs: job1
     name: Display repo
     steps:
     - name: 
-      run: echo "The created repository is ${{ needs.job1.outputs.repositoryid }} ${{needs.job1.outputs.output2}} ${{needs.job1.outputs.output1}}"
+      run: echo "The created repository is ${{ needs.job1.outputs.repository-id }}"
 
