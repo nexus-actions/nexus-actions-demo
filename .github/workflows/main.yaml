@@ -1,0 +1,17 @@
+on: [push]
+
+jobs:
+  create_staging_repository:
+    runs-on: ubuntu-latest
+    name: Create staging repository
+    steps:
+    - name: 
+      id: create
+      uses: martinbonin/create-nexus-staging-repo
+      with:
+        username: ${{ secrets.SONATYPE_USERNAME }}
+        password: ${{ secrets.SONATYPE_PASSWORD }}
+        staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
+        description: A test staging repository from Actions
+    - name: 
+      run: echo "The time was ${{ steps.create.outputs.repository-id }}"
