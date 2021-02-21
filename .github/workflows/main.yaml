@@ -30,7 +30,7 @@ jobs:
           java-version: 14
       - name: Publish
         run: |
-          ./gradlew publishToOssRepository
+          ./gradlew publishAllPublicationsToOss
         env:
           SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository-id }}
           SONATYPE_USERNAME: mbonnin
