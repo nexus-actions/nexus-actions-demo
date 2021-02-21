@@ -4,6 +4,8 @@ jobs:
   create_staging_repository:
     runs-on: ubuntu-latest
     name: Create staging repository
+    outputs:
+      repository-id: ${{ steps.create.outputs.repository-id }}
     steps:
     - name: 
       id: create
@@ -13,5 +15,12 @@ jobs:
         password: ${{ secrets.SONATYPE_PASSWORD }}
         staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
         description: A test staging repository from Actions
+
+  display_staging_repository_id:
+    runs-on: ubuntu-latest
+    needs: create_staging_repository
+    name: Upload file in staging repo
+    steps:
     - name: 
-      run: echo "Repository created with id ${{ steps.create.outputs.repository-id }}"
+      run: echo "Repository created with id ${{ needs.create_staging_repository.outputs.repository-id }}"
+
