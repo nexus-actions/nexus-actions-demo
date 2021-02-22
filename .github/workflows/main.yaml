@@ -8,7 +8,7 @@ jobs:
       repository-id: ${{ steps.create.outputs.repository-id }}
     steps:
     - id: create
-      uses: martinbonnin/create-nexus-staging-repo@v1
+      uses: nexus-actions/create-nexus-staging-repo@v1
       with:
         # Do not use secrets for the username since the repository id will contain it
         # and it will not be passed across jobs :/

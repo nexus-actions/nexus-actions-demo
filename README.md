@@ -1,8 +1,8 @@
 # create-nexus-staging-repository-sample
 
-A Kotlin multiplatform sample project that uses the [create-nexus-staging-repo](https://github.com/martinbonnin/create-nexus-staging-repo) Github Action to create a Nexus repository ahead of upload and avoid split staging repositories.
+A Kotlin multiplatform sample project that uses the [create-nexus-staging-repo](https://github.com/nexus-actions/create-nexus-staging-repo) Github Action to create a Nexus repository ahead of upload and avoid split staging repositories.
 
-🔧See it in action in this repo's [Actions](https://github.com/martinbonnin/create-nexus-staging-repo-sample/actions) 🔧
+🔧See it in action in this repo's [Actions](https://github.com/nexus-actions/create-nexus-staging-repo-sample/actions) 🔧
 
 ![](screenshot.png)
 
@@ -18,7 +18,7 @@ jobs:
       repository-id: ${{ steps.create.outputs.repository-id }}
     steps:
     - id: create
-      uses: martinbonnin/create-nexus-staging-repo@v1
+      uses: nexus-actions/create-nexus-staging-repo@v1
       with:
         # The username you use to connect to Sonatype's Jira
         # Do not use secrets for the username since the repository id will contain it

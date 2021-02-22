@@ -42,7 +42,7 @@ publishing {
       pom {
         name.set("create-nexus-staging-repo-sample")
         description.set("a sample project for the create-nexus-staging-repo")
-        url.set("https://github.com/martinbonnin/create-nexus-staging-repo-sample/")
+        url.set("https://github.com/nexus-actions/create-nexus-staging-repo-sample/")
         developers {
           developer {
             name.set("Martin Bonnin")
@@ -51,11 +51,11 @@ publishing {
         licenses {
           license {
             name.set("MIT license")
-            url.set("https://github.com/martinbonnin/create-nexus-staging-repo-sample/")
+            url.set("https://github.com/nexus-actions/create-nexus-staging-repo-sample/")
           }
         }
         scm {
-          url.set("https://github.com/martinbonnin/create-nexus-staging-repo-sample/")
+          url.set("https://github.com/nexus-actions/create-nexus-staging-repo-sample/")
         }
       }
     }
