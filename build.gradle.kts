@@ -1,6 +1,7 @@
 plugins {
   kotlin("multiplatform").version("1.4.30")
   id("maven-publish")
+  id("signing")
 }
 
 repositories {
@@ -13,7 +14,7 @@ kotlin {
   mingwX64()
 }
 
-group = "com.example"
+group = "com.github.nexus-actions.sample"
 version = "0.1"
 
 /**
@@ -22,6 +23,12 @@ version = "0.1"
  *
  * See https://github.com/vanniktech/gradle-maven-publish-plugin for a plugin that helps setting this up.
  */
+
+// Empty javadoc
+val javadocJar = tasks.register("javadocJar", Jar::class.java) {
+  archiveClassifier.set("javadoc")
+}
+
 publishing {
   repositories {
     maven {
@@ -37,11 +44,13 @@ publishing {
       }
     }
   }
+
   publications {
     withType<MavenPublication> {
+      artifact(javadocJar)
       pom {
-        name.set("create-nexus-staging-repo-sample")
-        description.set("a sample project for the create-nexus-staging-repo")
+        name.set("nexus-actions-repo-sample")
+        description.set("a sample project for the nexus-actions Github Actions")
         url.set("https://github.com/nexus-actions/create-nexus-staging-repo-sample/")
         developers {
           developer {
@@ -60,4 +69,9 @@ publishing {
       }
     }
   }
+}
+
+signing {
+  useInMemoryPgpKeys(System.getenv("GPG_PRIVATE_KEY"), System.getenv("GPG_PRIVATE_PASSWORD"))
+  sign(publishing.publications)
 }
