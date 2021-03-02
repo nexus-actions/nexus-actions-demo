@@ -1,4 +1,6 @@
-on: [push]
+on:
+  release:
+    types: [published]
 
 jobs:
   create_staging_repository:
