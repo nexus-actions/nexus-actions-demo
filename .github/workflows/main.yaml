@@ -1,11 +1,13 @@
-on: [push]
+on:
+  release:
+    types: [published]
 
 jobs:
   create_staging_repository:
     runs-on: ubuntu-latest
     name: Create staging repository
     outputs:
-      repository_id: ${{ steps.create.outputs.repository_id }}
+      repository-id: ${{ steps.create.outputs.repository-id }}
     steps:
       - id: create
         uses: nexus-actions/create-nexus-staging-repo@main
@@ -29,7 +31,7 @@ jobs:
         run: |
           ./gradlew publishAllPublicationsToOss
         env:
-          SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository_id }}
+          SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository-id }}
           SONATYPE_USERNAME: ${{ secrets.NEXUS_ACTIONS_SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.NEXUS_ACTIONS_SONATYPE_PASSWORD }}
           GPG_PRIVATE_KEY: ${{ secrets.NEXUS_ACTIONS_GPG_PRIVATE_KEY }}
@@ -49,7 +51,7 @@ jobs:
         run: |
           ./gradlew publishMingwX64PublicationToOss
         env:
-          SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository_id }}
+          SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository-id }}
           SONATYPE_USERNAME: ${{ secrets.NEXUS_ACTIONS_SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.NEXUS_ACTIONS_SONATYPE_PASSWORD }}
           GPG_PRIVATE_KEY: ${{ secrets.NEXUS_ACTIONS_GPG_PRIVATE_KEY }}
@@ -66,11 +68,11 @@ jobs:
         with:
           username: ${{ secrets.NEXUS_ACTIONS_SONATYPE_USERNAME }}
           password: ${{ secrets.NEXUS_ACTIONS_SONATYPE_PASSWORD }}
-          staging_repository_id: ${{ needs.create_staging_repository.outputs.repository_id }}
+          staged_repository_id: ${{ needs.create_staging_repository.outputs.repository-id }}
       - name: Release
         if: ${{ needs.macos.result == 'success' && needs.windows.result == 'success' }}
         uses: nexus-actions/release-nexus-staging-repo@main
         with:
           username: ${{ secrets.NEXUS_ACTIONS_SONATYPE_USERNAME }}
           password: ${{ secrets.NEXUS_ACTIONS_SONATYPE_PASSWORD }}
-          staging_repository_id: ${{ needs.create_staging_repository.outputs.repository_id }}
+          staged_repository_id: ${{ needs.create_staging_repository.outputs.repository-id }}
