@@ -15,7 +15,7 @@ kotlin {
 }
 
 group = "com.github.nexus-actions.sample"
-version = "0.1"
+version = "0.2"
 
 /**
  * Minimalist publishing setup. The multiplatform plugin does most of the work for us but we still

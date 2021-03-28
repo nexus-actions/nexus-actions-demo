@@ -74,3 +74,4 @@ jobs:
           username: ${{ secrets.NEXUS_ACTIONS_SONATYPE_USERNAME }}
           password: ${{ secrets.NEXUS_ACTIONS_SONATYPE_PASSWORD }}
           staging_repository_id: ${{ needs.create_staging_repository.outputs.repository_id }}
+          close_only: 'true'
