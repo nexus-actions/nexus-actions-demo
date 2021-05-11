@@ -101,7 +101,7 @@ Depending on the previous jobs you can either drop or release your staging repo:
         with:
           username: ${{ secrets.SONATYPE_USERNAME }}
           password: ${{ secrets.SONATYPE_PASSWORD }}
-          staged_repository_id: ${{ needs.create_staging_repository.outputs.repository-id }}
+          staging_repository_id: ${{ needs.create_staging_repository.outputs.repository-id }}
       - name: Release
         if: ${{ needs.macos.result == 'success' && needs.windows.result == 'success' }}
         uses: nexus-actions/release-nexus-staging-repo@main
