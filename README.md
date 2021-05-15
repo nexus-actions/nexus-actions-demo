@@ -25,7 +25,7 @@ jobs:
     name: Create staging repository
     outputs:
       # connect the step output to the job output
-      repository-id: ${{ steps.create.outputs.repository-id }}
+      repository_id: ${{ steps.create.outputs.repository_id }}
     steps:
     - id: create
       uses: nexus-actions/create-nexus-staging-repo@v1
@@ -59,7 +59,7 @@ windows:
       run: |
         ./gradlew publishMingwX64PublicationToOss
       env:
-        SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository-id }}
+        SONATYPE_REPOSITORY_ID: ${{ needs.create_staging_repository.outputs.repository_id }}
         SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
         GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
@@ -108,7 +108,7 @@ Depending on the previous jobs you can either drop or release your staging repo:
         with:
           username: ${{ secrets.SONATYPE_USERNAME }}
           password: ${{ secrets.SONATYPE_PASSWORD }}
-          staging_repository_id: ${{ needs.create_staging_repository.outputs.repository-id }}
+          staging_repository_id: ${{ needs.create_staging_repository.outputs.repository_id }}
 ````
 
 ----------
