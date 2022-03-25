@@ -28,7 +28,7 @@ jobs:
       repository_id: ${{ steps.create.outputs.repository_id }}
     steps:
     - id: create
-      uses: nexus-actions/create-nexus-staging-repo@v1
+      uses: nexus-actions/create-nexus-staging-repo@10a43a22d0278ed006f1293214b99184c60fbdff // v1.1
       with:
         # The username you use to connect to Sonatype's Jira
         username: ${{ secrets.SONATYPE_USERNAME }}
@@ -97,14 +97,14 @@ Depending on the previous jobs you can either drop or release your staging repo:
     steps:
       - name: Discard
         if: ${{ needs.macos.result != 'success' || needs.windows.result != 'success' }}
-        uses: nexus-actions/drop-nexus-staging-repo@main
+        uses: nexus-actions/drop-nexus-staging-repo@fe83783967a063540320ace3c8942608246705a1 // v1
         with:
           username: ${{ secrets.SONATYPE_USERNAME }}
           password: ${{ secrets.SONATYPE_PASSWORD }}
           staging_repository_id: ${{ needs.create_staging_repository.outputs.repository-id }}
       - name: Release
         if: ${{ needs.macos.result == 'success' && needs.windows.result == 'success' }}
-        uses: nexus-actions/release-nexus-staging-repo@main
+        uses: nexus-actions/release-nexus-staging-repo@36161f25ef98cc3821eabb11ab742d2e9d479e52 // v1.2
         with:
           username: ${{ secrets.SONATYPE_USERNAME }}
           password: ${{ secrets.SONATYPE_PASSWORD }}
