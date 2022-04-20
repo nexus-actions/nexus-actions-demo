@@ -34,7 +34,7 @@ jobs:
         username: ${{ secrets.SONATYPE_USERNAME }}
         password: ${{ secrets.SONATYPE_PASSWORD }}
         # Your staging profile ID. You can get it at https://oss.sonatype.org/#stagingProfiles;$staginProfileId
-        staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
+        staging_profile_id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
         # a description to identify your repository in the UI
         description: Created by $GITHUB_WORKFLOW ($GITHUB_ACTION) for $GITHUB_REPOSITORY
 ```
@@ -101,7 +101,7 @@ Depending on the previous jobs you can either drop or release your staging repo:
         with:
           username: ${{ secrets.SONATYPE_USERNAME }}
           password: ${{ secrets.SONATYPE_PASSWORD }}
-          staging_repository_id: ${{ needs.create_staging_repository.outputs.repository-id }}
+          staging_repository_id: ${{ needs.create_staging_repository.outputs.repository_id }}
       - name: Release
         if: ${{ needs.macos.result == 'success' && needs.windows.result == 'success' }}
         uses: nexus-actions/release-nexus-staging-repo@36161f25ef98cc3821eabb11ab742d2e9d479e52 // v1.2
