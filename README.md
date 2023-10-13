@@ -34,7 +34,7 @@ jobs:
         username: ${{ secrets.SONATYPE_USERNAME }}
         password: ${{ secrets.SONATYPE_PASSWORD }}
         # Your staging profile ID. You can get it at https://oss.sonatype.org/#stagingProfiles;$staginProfileId
-        staging-profile-id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
+        staging_profile_id: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
         # a description to identify your repository in the UI
         description: Created by $GITHUB_WORKFLOW ($GITHUB_ACTION) for $GITHUB_REPOSITORY
 ```
