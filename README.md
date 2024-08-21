@@ -3,7 +3,7 @@
 A Kotlin multiplatform sample project that uses the actions:
 - [create-nexus-staging-repo](https://github.com/nexus-actions/create-nexus-staging-repo) Github Action to create a Nexus repository ahead of upload and avoid split staging repositories.
 - [drop-nexus-staging-repo](https://github.com/nexus-actions/drop-nexus-staging-repo) Github Action to drop an existing Nexus staged repository, generally to discard previously uploaded artifacts after a job failure.
-- [release-nexus-staging-repo](https://github.com/nexus-actions/drop-nexus-staging-repo) Github Action to close an existing Nexus staged repository, and if the sonatype process ends by closing the staged repository properly it will release the artifacts on Maven Central.
+- [release-nexus-staging-repo](https://github.com/nexus-actions/release-nexus-staging-repo) Github Action to close an existing Nexus staged repository, and if the sonatype process ends by closing the staged repository properly it will release the artifacts on Maven Central.
 
 🔧 See it in action in this repo's [Actions](https://github.com/nexus-actions/create-nexus-staging-repo-sample/actions) 🔧
 
