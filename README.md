@@ -1,3 +1,5 @@
+Deprecated & archived due to [OSSRH sunset](https://central.sonatype.org/news/20250326_ossrh_sunset/) (June 2025)
+
 # create-nexus-staging-repository-sample
 
 A Kotlin multiplatform sample project that uses the actions:
